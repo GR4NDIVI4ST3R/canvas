@@ -1,0 +1,7 @@
+/*Give canvas box a border*/
+canvas {
+    display: block;
+}
+body {
+    margin: 0;
+}
