@@ -38,12 +38,12 @@ canvas.addEventListener('click', function() {
 })
 
 //* Constants
-var ballCount = 100;
+var ballCount = 150;
 var radius = 30;
 var g = 0.6;
-var maxSpeed = 16;
-var bounceFriction = 0.965;
-var rollFriction = 0.975;
+var maxSpeed = 20;
+var bounceFriction = 0.9;
+var rollFriction = 0.99;
 
 var colorArray = [
     '#2185C5',
