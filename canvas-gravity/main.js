@@ -38,12 +38,12 @@ canvas.addEventListener('click', function() {
 })
 
 //* Constants
-var ballCount = 150;
+var ballCount = 125;
 var radius = 30;
 var g = 0.6;
 var maxSpeed = 20;
-var bounceFriction = 0.9;
-var rollFriction = 0.99;
+var bounceFriction = 0.87;
+var rollFriction = 0.985;
 
 var colorArray = [
     '#2185C5',
@@ -57,7 +57,6 @@ function Ball(x, y, dx, dy, g, radius, color) {
     this.x = x;
     this.y = y;
     this.dx = dx;
-    this.bounceFriction = bounceFriction;
     this.dy = dy;
     this.g = g;
     this.radius = radius;
@@ -69,7 +68,7 @@ function Ball(x, y, dx, dy, g, radius, color) {
         // Reverse velocity when each ball contacts the walls of the canvas
         if ( this.x + this.radius + this.dx >= canvas.width || this.x - this.radius + this.dx <= 0 ) {
             
-            this.dx = -this.dx * this.bounceFriction;
+            this.dx = -this.dx * bounceFriction;
         }
         if ( this.y + this.radius + this.dy >= canvas.height || this.y - this.radius + this.dy <= 0 ) {
 
@@ -80,7 +79,6 @@ function Ball(x, y, dx, dy, g, radius, color) {
             if (this.dy > -0.25 && this.dy < 0.25) {
                 this.dy = 0;
                 this.y = canvas.height - this.radius;
-                this.dx = this.dx * rollFriction;
             }
             if (this.dx > -0.05 && this.dx < 0.05) {
                 this.dx = 0;
@@ -119,11 +117,11 @@ function generate() {
     ballArray = [];
     // Ball(x, y, dy, a, radius, color)
     for (let i = 0; i < ballCount; i++) {
-        var x = random(radius, canvas.width - radius);
-        var y = randomInt(radius, canvas.height - radius);
-        var dx = random(-maxSpeed, maxSpeed);
-        var dy = random(-maxSpeed, maxSpeed);
-        var color = colorArray[randomInt(0, colorArray.length)];
+        let x = random(radius, canvas.width - radius);
+        let y = randomInt(radius, canvas.height - radius);
+        let dx = random(-maxSpeed, maxSpeed);
+        let dy = random(-maxSpeed, maxSpeed);
+        let color = colorArray[randomInt(0, colorArray.length)];
         
         ballArray.push( new Ball(x, y, dx, dy, g, radius, color) );
         
